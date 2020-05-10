@@ -71,7 +71,7 @@ inline void ensurePositiveQuaternion(Eigen::Ref<Eigen::Vector4d> quat_xyzw) {
 inline bool isValidQuaternion(const Eigen::Quaterniond& quat) {
   constexpr double kEpsilon = 1e-5;
   const double norm = quat.squaredNorm();
-  return (quat.w() > 0.0) && (norm < ((1.0 + kEpsilon) * (1.0 + kEpsilon))) &&
+  return (quat.w() >= 0.0) && (norm < ((1.0 + kEpsilon) * (1.0 + kEpsilon))) &&
          (norm > ((1.0 - kEpsilon) * (1.0 - kEpsilon)));
 }
 

@@ -115,7 +115,8 @@ int main(int argc, char* argv[]) {
     const int64_t timestamp_ns = image_message->header.stamp.toNSec();
     CHECK_GE(timestamp_ns, 0);
 
-    if (image_message->encoding == sensor_msgs::image_encodings::TYPE_16UC1) {
+    if (image_message->encoding == sensor_msgs::image_encodings::TYPE_16UC1 ||
+        image_message->encoding == sensor_msgs::image_encodings::RGB8) {
       LOG(INFO) << "Found depth map at " << timestamp_ns << " ns";
 
       cv::Mat image;
