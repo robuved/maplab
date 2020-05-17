@@ -22,6 +22,9 @@ void convertDepthImageMessage(
 void convertColorImageMessage(
     sensor_msgs::ImageConstPtr image_message, cv::Mat* image);
 
+void convertColorImageRGB8Message(
+   sensor_msgs::ImageConstPtr image_message, cv::Mat* image);
+ 
 void convertCameraInfo(
     sensor_msgs::CameraInfoConstPtr camera_info_msg,
     const geometry_msgs::Transform& T_C_I_stamped,

@@ -115,8 +115,7 @@ int main(int argc, char* argv[]) {
     const int64_t timestamp_ns = image_message->header.stamp.toNSec();
     CHECK_GE(timestamp_ns, 0);
 
-    if (image_message->encoding == sensor_msgs::image_encodings::TYPE_16UC1 ||
-        image_message->encoding == sensor_msgs::image_encodings::RGB8) {
+    if (image_message->encoding == sensor_msgs::image_encodings::TYPE_16UC1) {
       LOG(INFO) << "Found depth map at " << timestamp_ns << " ns";
 
       cv::Mat image;
@@ -138,6 +137,21 @@ int main(int argc, char* argv[]) {
       convertColorImageMessage(image_message, &image);
 
       cv::imshow(window_name, image);
+      constexpr int kDepthMapVisualizationWaitTimeMs = 10;
+      cv::waitKey(kDepthMapVisualizationWaitTimeMs);
+
+      map.storeOptionalRawColorImage(
+          camera_id, timestamp_ns, image, &selected_mission);
+    } else if (
+        image_message->encoding == sensor_msgs::image_encodings::RGB8) {
+      LOG(INFO) << "Found color image at " << timestamp_ns;
+
+      cv::Mat image;
+      convertColorImageRGB8Message(image_message, &image);
+      cv::Mat imageBGR;
+      cv::cvtColor(image, imageBGR, cv::COLOR_RGB2BGR);
+      cv::imshow(window_name, imageBGR);
+      image = imageBGR;
       constexpr int kDepthMapVisualizationWaitTimeMs = 10;
       cv::waitKey(kDepthMapVisualizationWaitTimeMs);
 

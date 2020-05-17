@@ -98,6 +98,24 @@ void convertColorImageMessage(
   *image = cv_ptr->image.clone();
 }
 
+void convertColorImageRGB8Message(
+    sensor_msgs::ImageConstPtr image_message, cv::Mat* image) {
+  CHECK(image_message);
+  CHECK_NOTNULL(image);
+  CHECK_EQ(image_message->encoding, sensor_msgs::image_encodings::RGB8);
+
+  cv_bridge::CvImageConstPtr cv_ptr;
+  try {
+    cv_ptr = cv_bridge::toCvShare(
+        image_message, sensor_msgs::image_encodings::RGB8);
+  } catch (const cv_bridge::Exception& e) {  // NOLINT
+    LOG(FATAL) << "cv_bridge exception: " << e.what();
+  }
+  CHECK(cv_ptr);
+
+  *image = cv_ptr->image.clone();
+}
+
 void convertCameraInfo(
     sensor_msgs::CameraInfoConstPtr camera_info_msg,
     const geometry_msgs::Transform& T_C_I_msg,
