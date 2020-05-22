@@ -2,7 +2,7 @@ id: c63aecb41bfdfd6b7e1fac37c7cbe7bf
 hardware_id: imu0
 sensor_type: IMU
 sigmas:
-  acc_noise_density: 0.1
+  acc_noise_density: 0.5
   acc_bias_random_walk_noise_density: 0.1
   gyro_noise_density: 3e-3
   gyro_bias_random_walk_noise_density: 3e-3
