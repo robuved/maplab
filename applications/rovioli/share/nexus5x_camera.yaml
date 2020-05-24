@@ -1,27 +1,48 @@
-label: "VISensor - Euroc - original_calibration"
-id: 412eab8e4058621f7036b5e765dfe812
+label: "Nexus 5X Kalibr calibration"
+id: 8af1bac2a7c5fad79f09e49e3b96d87c
 cameras:
-- camera:
-    label: cam0
-    id: 54812562fa109c40fe90b29a59dd7798
+  - camera:
+    label: /cam0
+    id: 9be7b5000f15adb3c0da8ac6b729ee05
     line-delay-nanoseconds: 0
     image_height: 768
     image_width: 1024
     type: pinhole
     intrinsics:
-      cols: 1
       rows: 4
-      data: [782.4546, 788.7431, 508.6564, 383.3850]
+      cols: 1
+      data:
+        - 758.0317608927862
+        - 759.3479343504715
+        - 518.3401133164667
+        - 351.4225152658784
     distortion:
-      type: radial-tangential  
+      type: radial-tangential
       parameters:
-        cols: 1
         rows: 4
-        data: [-0.0071, 0.0360, 0.0, 0.0]
+        cols: 1
+        data:
+          - -0.008954404802899735
+          - 0.03722545689838106
+          - -0.011133692876957849
+          - 0.0022431637064382914
   T_B_C:
-    cols: 4
     rows: 4
-    data: [0.0, -1.0, 0.0, 0.0,
-           -1.0, 0.0, 0.0, 0.0,
-           0.0, 0.0, -1.0, 0.0,
-           0.0, 0.0, 0.0, 1.0]
+    cols: 4
+    data:
+      - -0.018004698894376354
+      - -0.9990539702234619
+      - 0.0395852927040004
+      - 0.002268810735103417
+      - -0.9998330574435065
+      - 0.017867243219122513
+      - -0.0038234621639202694
+      - 0.004703131069674421
+      - 0.003112565002221207
+      - -0.039647524519032265
+      - -0.9992088799338305
+      - -0.002846266048876153
+      - 0.0
+      - 0.0
+      - 0.0
+      - 1.0
